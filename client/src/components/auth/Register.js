@@ -1,6 +1,11 @@
 import React, {Component} from 'react'
-import axios from 'axios'
+import {connect} from 'react-redux'
+// import axios from 'axios'
 import classnames from 'classnames'
+
+import {registerUser} from '../../store/actions/authActions'
+// import * as actionCreators from '../../store/actions/authActions'
+
 
 class Register extends Component {
     state = {
@@ -26,19 +31,24 @@ class Register extends Component {
             password2: this.state.password2
         }
 
-        axios.post('api/users/register', newUser)
-            .then(res => console.log(res.data))
-            .catch(err => this.setState({errors: err.response.data}));
+
+        this.props.onRegisterUser(newUser);
+        //     axios.post('api/users/register', newUser)
+        //         .then(res => console.log(res.data))
+        //         .catch(err => this.setState({errors: err.response.data}));
     }
 
     render() {
         const {errors} = this.state;
+
+        const {user} = this.props.auth;
 
         return (
             <div className="register">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
+                            <h1>{user?user.name:''}</h1>
                             <h1 className="display-4 text-center">Sign Up</h1>
                             <p className="lead text-center">Create your DevConnector account</p>
                             <form noValidate onSubmit={this.unSubmit}>
@@ -104,4 +114,12 @@ class Register extends Component {
     }
 }
 
-export default Register;
+const mapStateToProps = (state) => ({auth: state.auth});
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onRegisterUser: (usr) => dispatch( registerUser(usr)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
