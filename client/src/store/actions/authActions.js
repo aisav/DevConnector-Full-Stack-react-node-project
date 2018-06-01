@@ -1,11 +1,13 @@
 import * as actionTypes from './types';
 import axios from 'axios'
+import history from '../history'
+
 
 
 // Register User
-export const registerUser = (userData, history) => dispatch => {
+export const registerUser = (userData) => dispatch => {
     axios.post('api/users/register', userData)
-        .then(res => console.log(res.data))
+        .then(res => history.push('/login'))
         .catch(err => dispatch(
             {
                 type: actionTypes.GET_ERRORS,
