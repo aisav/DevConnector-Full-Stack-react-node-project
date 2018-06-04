@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import TextFieldGroup from '../common/TextFieldGroup'
 
 import {loginUser} from '../../store/actions/authActions'
-import register from "../../registerServiceWorker";
 
 class Login extends Component {
     state = {

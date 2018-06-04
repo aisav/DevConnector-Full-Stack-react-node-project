@@ -9,10 +9,13 @@ import Footer from './components/layout/Footer'
 import Landing from './components/layout/Landing'
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Dashboard from './components/dashboard/Dashboard';
 import store from './store/store';
 import history from './store/history'
 
+
 import './App.css';
+
 if(localStorage.jwtToken) {
     const t = localStorage.jwtToken
     setAuthToken(t);
@@ -33,6 +36,7 @@ class App extends Component {
                         <div className="container">
                             <Route path="/login" exact component={Login}/>
                             <Route path="/register" exact component={Register}/>
+                            <Route path="/dashboard" exact component={Dashboard}/>
                         </div>
                         <Footer/>
                     </div>
