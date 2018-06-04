@@ -24,5 +24,8 @@ export const setProfileLoading = () => {
     }
 }
 
-
-
+export const clearCurrentProfile = () => {
+    return {
+        type: actionTypes.CLEAR_CURRENT_PROFILE
+    }
+}

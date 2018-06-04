@@ -2,8 +2,14 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {logoutUser} from '../../store/actions/authActions'
+import {clearCurrentProfile} from '../../store/actions/profileActions'
 
 class Navbar extends Component {
+    onLogoutClick (e) {
+        e.preventDefault();
+        this.props.clearCurrentProfile();
+        this.props.logoutUser()
+    }
     render () {
 
         const {isAuthenticated, user} = this.props.auth;
@@ -23,7 +29,7 @@ class Navbar extends Component {
                 <li className="nav-item">
                     <a href=""
                        className="nav-link"
-                       onClick={this.props.logoutUser}>
+                       onClick={ this.onLogoutClick.bind(this)}>
                         <img className="rounded-circle"
                              src={user.avatar}
                              title="You must have a gravatar connected to your email to display an image"
@@ -65,4 +71,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {logoutUser})(Navbar);
+export default connect(mapStateToProps, {logoutUser, clearCurrentProfile})(Navbar);
