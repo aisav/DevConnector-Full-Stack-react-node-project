@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import {Router, Route} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import {setCurrentUser} from './store/actions/authActions';
+
+import PrivateRoute from './components/common/PrivateRoute';
+
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Landing from './components/layout/Landing'
@@ -16,7 +19,7 @@ import history from './store/history'
 
 import './App.css';
 
-if(localStorage.jwtToken) {
+if (localStorage.jwtToken) {
     const t = localStorage.jwtToken
     setAuthToken(t);
     const user = jwt_decode(t)
@@ -36,7 +39,9 @@ class App extends Component {
                         <div className="container">
                             <Route path="/login" exact component={Login}/>
                             <Route path="/register" exact component={Register}/>
-                            <Route path="/dashboard" exact component={Dashboard}/>
+                            <Switch>
+                                <PrivateRoute path="/dashboard" exact component={Dashboard}/>
+                            </Switch>
                         </div>
                         <Footer/>
                     </div>
