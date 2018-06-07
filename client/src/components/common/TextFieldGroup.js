@@ -32,7 +32,7 @@ TextFieldGroup.propTypes  = {
 }
 
 TextFieldGroup.defaultProps = {
-    typ: 'text'
+    type: 'text'
 }
 
 export default TextFieldGroup

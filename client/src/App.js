@@ -15,19 +15,16 @@ import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import store from './store/store';
 import history from './store/history'
-
+import CreateProfile from "./components/create-profile/CreateProfile";
 
 import './App.css';
 
+
 if (localStorage.jwtToken) {
-    const t = localStorage.jwtToken
-    setAuthToken(t);
-    const user = jwt_decode(t)
-    //setCurrentUser(user) instead off this we must
-    store.dispatch(setCurrentUser(user))
-
+    setAuthToken(localStorage.jwtToken);
+    const decoded = jwt_decode(localStorage.jwtToken);
+    store.dispatch(setCurrentUser(decoded));
 }
-
 class App extends Component {
     render() {
         return (
@@ -40,7 +37,10 @@ class App extends Component {
                             <Route path="/login" exact component={Login}/>
                             <Route path="/register" exact component={Register}/>
                             <Switch>
-                                <PrivateRoute path="/dashboard" exact component={Dashboard}/>
+                                <PrivateRoute exact path="/dashboard"  component={Dashboard}/>
+                            </Switch>
+                            <Switch>
+                                <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
                             </Switch>
                         </div>
                         <Footer/>

@@ -4,7 +4,8 @@ const isEmpty = require('./is-empty');
 module.exports = function validateProfileInput(data) {
     let errors = {};
 
-    console.log(data)
+
+
     data.handle = !isEmpty(data.handle) ? data.handle : '';
     data.status = !isEmpty(data.status) ? data.status : '';
     data.skills = !isEmpty(data.skills) ? data.skills : '';
