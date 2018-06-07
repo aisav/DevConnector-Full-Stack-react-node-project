@@ -12,6 +12,12 @@ class Login extends Component {
         errors: {}
     }
 
+    componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push('/dashboard')
+        }
+    }
+
     //this we want to change components react state-errors
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
