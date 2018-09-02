@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import history from '../../store/history'
+
 import TextFieldGroup from '../common/TextFieldGroup'
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup'
 import InputGroup from '../common/InputGroup'
@@ -16,8 +16,6 @@ class CreateProfile extends Component {
     constructor(props) {
         super(props);
 
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             displaySocialInputs: false,
@@ -39,11 +37,11 @@ class CreateProfile extends Component {
     }
 
 
-    onChange(e) {
+    onChange = (e) => {
         this.setState({[e.target.name]: e.target.value});
     }
 
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault();
 
         const profileData = {
@@ -62,7 +60,7 @@ class CreateProfile extends Component {
             instagram: this.state.instagram
         };
 
-        this.props.createProfile(profileData, this.props.history, history);
+        this.props.createProfile(profileData, this.props.history);
     }
 
 

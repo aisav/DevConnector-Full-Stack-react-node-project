@@ -10,6 +10,7 @@ const TextFieldGroup = ({name, placeHolder, value, label, error, info, type, onC
                        'is-invalid': error})}
                    placeholder={placeHolder}
                    name={name}
+                   value={value}
                    onChange={onChange}
                    disabled={disabled}/>
             {info && <small className="form-text text-muted">{info}</small>}
