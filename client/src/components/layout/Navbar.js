@@ -6,7 +6,7 @@ import {logoutUser} from '../../store/actions/authActions'
 import {clearCurrentProfile} from '../../store/actions/profileActions'
 
 class Navbar extends Component {
-    onLogoutClick (e) {
+    onLogoutClick = e => {
         e.preventDefault();
         this.props.clearCurrentProfile();
         this.props.logoutUser()
@@ -30,7 +30,7 @@ class Navbar extends Component {
                 <li className="nav-item">
                     <a href=""
                        className="nav-link"
-                       onClick={ this.onLogoutClick.bind(this)}>
+                       onClick={this.onLogoutClick}>
                         <img className="rounded-circle"
                              src={user.avatar}
                              title="You must have a gravatar connected to your email to display an image"
@@ -68,12 +68,12 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
     logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.auth,
+        auth: state.auth
     }
 };
 

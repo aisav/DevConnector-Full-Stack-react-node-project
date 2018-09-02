@@ -41,7 +41,7 @@ class Register extends Component {
             password2: this.state.password2
         }
 
-        this.props.onRegisterUser(newUser, this.props.history);
+        this.props.registerUser(newUser, this.props.history);
     }
 
     render() {
@@ -100,7 +100,7 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-    onRegisterUser: PropTypes.func.isRequired,
+    registerUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
@@ -112,10 +112,10 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onRegisterUser: (usr) => dispatch(registerUser(usr)),
-    };
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         onRegisterUser: (usr) => dispatch(registerUser(usr)),
+//     };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));
