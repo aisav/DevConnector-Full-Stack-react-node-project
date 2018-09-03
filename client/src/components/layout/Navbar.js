@@ -7,13 +7,13 @@ import {clearCurrentProfile} from '../../store/actions/profileActions'
 
 class Navbar extends Component {
     onLogoutClick = e => {
-        e.preventDefault();
-        this.props.clearCurrentProfile();
+        e.preventDefault()
+        this.props.clearCurrentProfile()
         this.props.logoutUser()
     }
     render () {
 
-        const {isAuthenticated, user} = this.props.auth;
+        const {isAuthenticated, user} = this.props.auth
         const guestLinks = (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
@@ -23,10 +23,13 @@ class Navbar extends Component {
                     <Link className="nav-link" to="/login">Login</Link>
                 </li>
             </ul>
-        );
+        )
 
         const activeUserLinks = (
             <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <Link className="nav-link" to="/feed">Post Feed</Link>
+                </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/dashboard">Dashboard</Link>
                 </li>
@@ -78,6 +81,6 @@ const mapStateToProps = (state) => {
     return {
         auth: state.auth
     }
-};
+}
 
-export default connect(mapStateToProps, {logoutUser, clearCurrentProfile})(Navbar);
+export default connect(mapStateToProps, {logoutUser, clearCurrentProfile})(Navbar)

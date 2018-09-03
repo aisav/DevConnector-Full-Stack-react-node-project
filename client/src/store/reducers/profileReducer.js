@@ -1,10 +1,10 @@
-import * as actionTypes from '../actions/types';
+import * as actionTypes from '../actions/types'
 
 const initialState = {
     profile: null,
     profiles: null,
     loading: false
-};
+}
 
 export default function(state = initialState, action) {
     switch (action.type) {
@@ -32,6 +32,6 @@ export default function(state = initialState, action) {
             }
 
         default:
-            return state;
+            return state
     }
 }

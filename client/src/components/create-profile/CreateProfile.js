@@ -8,13 +8,13 @@ import TextFieldGroup from '../common/TextFieldGroup'
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup'
 import InputGroup from '../common/InputGroup'
 import SelectListGroup from '../common/SelectListGroup'
-import { createProfile } from '../../store/actions/profileActions';
+import { createProfile } from '../../store/actions/profileActions'
 
 
 class CreateProfile extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
 
 
         this.state = {
@@ -33,16 +33,16 @@ class CreateProfile extends Component {
             youtube: '',
             instagram: '',
             errors: {}
-        };
+        }
     }
 
 
     onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
+        this.setState({[e.target.name]: e.target.value})
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         const profileData = {
             handle: this.state.handle,
@@ -58,22 +58,22 @@ class CreateProfile extends Component {
             linkedin: this.state.linkedin,
             youtube: this.state.youtube,
             instagram: this.state.instagram
-        };
+        }
 
-        this.props.createProfile(profileData, this.props.history);
+        this.props.createProfile(profileData, this.props.history)
     }
 
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.errors) {
-            this.setState({errors: nextProps.errors});
+            this.setState({errors: nextProps.errors})
         }
     }
 
     render() {
-        const {errors, displaySocialInputs} = this.state;
+        const {errors, displaySocialInputs} = this.state
 
-        let socialInputs;
+        let socialInputs
 
         if (displaySocialInputs) {
             socialInputs = (
@@ -123,7 +123,7 @@ class CreateProfile extends Component {
                         error={errors.instagram}
                     />
                 </div>
-            );
+            )
         }
 
         // Select options for status
@@ -137,7 +137,7 @@ class CreateProfile extends Component {
             {label: 'Instructor or Teacher', value: 'Instructor or Teacher'},
             {label: 'Intern', value: 'Intern'},
             {label: 'Other', value: 'Other'}
-        ];
+        ]
 
         return (
             <div className="create-profile">
@@ -221,7 +221,7 @@ class CreateProfile extends Component {
                                         onClick={() => {
                                             this.setState(prevState => ({
                                                 displaySocialInputs: !prevState.displaySocialInputs
-                                            }));
+                                            }))
                                         }}
                                         className="btn btn-light"
                                     >
@@ -249,11 +249,11 @@ class CreateProfile extends Component {
 CreateProfile.propTypes = {
     profile: PropTypes.object.isRequired,
     // errors: PropTypes.object.isRequired
-};
+}
 
 const mapStateToProps = state => ({
     profile: state.profile,
     errors: state.errors
-});
+})
 
-export default connect(mapStateToProps, {createProfile})(withRouter(CreateProfile));
+export default connect(mapStateToProps, {createProfile})(withRouter(CreateProfile))

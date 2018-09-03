@@ -1,4 +1,4 @@
-import * as actionTypes from './types';
+import * as actionTypes from './types'
 import axios from 'axios'
 
 
@@ -15,7 +15,7 @@ export const getCurrentProfile = () => dispatch => {
             dispatch({
                 type: actionTypes.GET_PROFILE,
                 payload: {}
-            }));
+            }))
 }
 
 export const setProfileLoading = () => {
@@ -62,7 +62,7 @@ export const deleteAccount = (profileData, history) => dispatch => {
 
 // Get all profiles
 export const getProfiles = () => dispatch => {
-    dispatch(setProfileLoading());
+    dispatch(setProfileLoading())
     axios
         .get('/api/profile/all')
         .then(res =>
@@ -76,12 +76,12 @@ export const getProfiles = () => dispatch => {
                 type: actionTypes.GET_PROFILES,
                 payload: null
             })
-        );
-};
+        )
+}
 
 // Get profile by handle
 export const getProfileByHandle = handle => dispatch => {
-    dispatch(setProfileLoading());
+    dispatch(setProfileLoading())
     axios
         .get(`/api/profile/handle/${handle}`)
         .then(res =>
@@ -95,5 +95,5 @@ export const getProfileByHandle = handle => dispatch => {
                 type: actionTypes.GET_PROFILE,
                 payload: null
             })
-        );
+        )
 }

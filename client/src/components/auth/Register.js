@@ -32,7 +32,7 @@ class Register extends Component {
     }
 
     unSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         const newUser = {
             name: this.state.name,
@@ -41,14 +41,14 @@ class Register extends Component {
             password2: this.state.password2
         }
 
-        this.props.registerUser(newUser, this.props.history);
+        this.props.registerUser(newUser, this.props.history)
     }
 
     render() {
-        const {errors} = this.state;
+        const {errors} = this.state
 
         // we can get user
-        // const {user} = this.props.auth;
+        // const {user} = this.props.auth
 
         return (
             <div className="register">
@@ -103,19 +103,19 @@ Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
-};
+}
 
 const mapStateToProps = (state) => {
     return {
         auth: state.auth,
         errors: state.errors
     }
-};
+}
 
 // const mapDispatchToProps = dispatch => {
 //     return {
 //         onRegisterUser: (usr) => dispatch(registerUser(usr)),
-//     };
-// };
+//     }
+// }
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default connect(mapStateToProps, { registerUser })(withRouter(Register))

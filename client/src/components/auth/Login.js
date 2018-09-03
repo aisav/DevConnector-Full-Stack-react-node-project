@@ -33,14 +33,14 @@ class Login extends Component {
     }
 
     unSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         const user = {
             email: this.state.email,
             password: this.state.password,
         }
 
-        this.props.loginUser(user);
+        this.props.loginUser(user)
     }
 
 
@@ -93,13 +93,13 @@ const mapStateToProps = (state) => {
         auth: state.auth,
         errors: state.errors
     }
-};
+}
 
 
 // const mapDispatchToProps = dispatch => {
 //     return {
 //         onRegisterUser: (usr) => dispatch( loginUser(usr)),
-//     };
-// };
+//     }
+// }
 
-export default connect(mapStateToProps, {loginUser})(Login);
+export default connect(mapStateToProps, {loginUser})(Login)

@@ -17,13 +17,13 @@ class Dashboard extends Component {
     }
 
     render() {
-        const { user } = this.props.auth;
-        const { profile, loading } = this.props.profile;
+        const { user } = this.props.auth
+        const { profile, loading } = this.props.profile
 
-        let dashboardContent;
+        let dashboardContent
 
         if (profile === null || loading) {
-            dashboardContent = <Spinner />;
+            dashboardContent = <Spinner />
         } else {
             if (Object.keys(profile).length > 0) {
                 dashboardContent = (
@@ -47,7 +47,7 @@ class Dashboard extends Component {
                             Create Profile
                         </Link>
                     </div>
-                );
+                )
             }
         }
 
@@ -79,6 +79,6 @@ const mapStateToProps = (state) => {
         auth: state.auth,
         profile: state.profile
     }
-};
+}
 
-export default connect(mapStateToProps, {getCurrentProfile, deleteAccount})(Dashboard);
+export default connect(mapStateToProps, {getCurrentProfile, deleteAccount})(Dashboard)

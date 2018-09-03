@@ -15,7 +15,7 @@ import isEmpty from '../../validation/is-empty'
 class CreateProfile extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
 
 
         this.state = {
@@ -34,16 +34,16 @@ class CreateProfile extends Component {
             youtube: '',
             instagram: '',
             errors: {}
-        };
+        }
     }
 
 
     onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
+        this.setState({[e.target.name]: e.target.value})
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         const profileData = {
             handle: this.state.handle,
@@ -59,13 +59,13 @@ class CreateProfile extends Component {
             linkedin: this.state.linkedin,
             youtube: this.state.youtube,
             instagram: this.state.instagram
-        };
+        }
 
-        this.props.createProfile(profileData, this.props.history);
+        this.props.createProfile(profileData, this.props.history)
     }
 
     componentDidMount() {
-      this.props.getCurrentProfile();
+      this.props.getCurrentProfile()
     }
 
 
@@ -75,35 +75,35 @@ class CreateProfile extends Component {
         }
 
         if (nextProps.profile.profile) {
-            const profile = nextProps.profile.profile;
+            const profile = nextProps.profile.profile
 
             // Bring skills array back to CSV
-            const skillsCSV = profile.skills.join(',');
+            const skillsCSV = profile.skills.join(',')
 
             // If profile field doesnt exist, make empty string
-            profile.company = !isEmpty(profile.company) ? profile.company : '';
-            profile.website = !isEmpty(profile.website) ? profile.website : '';
-            profile.location = !isEmpty(profile.location) ? profile.location : '';
+            profile.company = !isEmpty(profile.company) ? profile.company : ''
+            profile.website = !isEmpty(profile.website) ? profile.website : ''
+            profile.location = !isEmpty(profile.location) ? profile.location : ''
             profile.githubusername = !isEmpty(profile.githubusername)
                 ? profile.githubusername
-                : '';
-            profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
-            profile.social = !isEmpty(profile.social) ? profile.social : {};
+                : ''
+            profile.bio = !isEmpty(profile.bio) ? profile.bio : ''
+            profile.social = !isEmpty(profile.social) ? profile.social : {}
             profile.twitter = !isEmpty(profile.social.twitter)
                 ? profile.social.twitter
-                : '';
+                : ''
             profile.facebook = !isEmpty(profile.social.facebook)
                 ? profile.social.facebook
-                : '';
+                : ''
             profile.linkedin = !isEmpty(profile.social.linkedin)
                 ? profile.social.linkedin
-                : '';
+                : ''
             profile.youtube = !isEmpty(profile.social.youtube)
                 ? profile.social.youtube
-                : '';
+                : ''
             profile.instagram = !isEmpty(profile.social.instagram)
                 ? profile.social.instagram
-                : '';
+                : ''
 
             // Set component fields state
             this.setState({
@@ -120,15 +120,15 @@ class CreateProfile extends Component {
                 linkedin: profile.linkedin,
                 youtube: profile.youtube,
                 instagram: profile.instagram
-            });
+            })
         }
 
     }
 
     render() {
-        const {errors, displaySocialInputs} = this.state;
+        const {errors, displaySocialInputs} = this.state
 
-        let socialInputs;
+        let socialInputs
 
         if (displaySocialInputs) {
             socialInputs = (
@@ -178,7 +178,7 @@ class CreateProfile extends Component {
                       error={errors.instagram}
                   />
                 </div>
-            );
+            )
         }
 
         // Select options for status
@@ -192,7 +192,7 @@ class CreateProfile extends Component {
             {label: 'Instructor or Teacher', value: 'Instructor or Teacher'},
             {label: 'Intern', value: 'Intern'},
             {label: 'Other', value: 'Other'}
-        ];
+        ]
 
         return (
             <div className="create-profile">
@@ -273,7 +273,7 @@ class CreateProfile extends Component {
                             onClick={() => {
                                 this.setState(prevState => ({
                                     displaySocialInputs: !prevState.displaySocialInputs
-                                }));
+                                }))
                             }}
                             className="btn btn-light"
                         >
@@ -301,11 +301,11 @@ class CreateProfile extends Component {
 CreateProfile.propTypes = {
     profile: PropTypes.object.isRequired,
     // errors: PropTypes.object.isRequired
-};
+}
 
 const mapStateToProps = state => ({
     profile: state.profile,
     errors: state.errors
-});
+})
 
-export default connect(mapStateToProps, {createProfile, getCurrentProfile})(withRouter(CreateProfile));
+export default connect(mapStateToProps, {createProfile, getCurrentProfile})(withRouter(CreateProfile))

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Moment from 'react-moment';
+import React, { Component } from 'react'
+import Moment from 'react-moment'
 
 class ProfileCreds extends Component {
   render() {
-    const { experience, education } = this.props;
+    const { experience, education } = this.props
 
     const expItems = experience.map(exp => (
       <li key={exp._id} className="list-group-item">
@@ -34,7 +34,7 @@ class ProfileCreds extends Component {
           )}
         </p>
       </li>
-    ));
+    ))
 
     const eduItems = education.map(edu => (
       <li key={edu._id} className="list-group-item">
@@ -61,7 +61,7 @@ class ProfileCreds extends Component {
           )}
         </p>
       </li>
-    ));
+    ))
     return (
       <div className="row">
         <div className="col-md-6">
@@ -82,8 +82,8 @@ class ProfileCreds extends Component {
           )}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default ProfileCreds;
+export default ProfileCreds

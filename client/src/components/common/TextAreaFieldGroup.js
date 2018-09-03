@@ -1,6 +1,6 @@
-import React from 'react';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import React from 'react'
+import classnames from 'classnames'
+import PropTypes from 'prop-types'
 
 const TextAreaFieldGroup = ({
   name,
@@ -24,8 +24,8 @@ const TextAreaFieldGroup = ({
       {info && <small className="form-text text-muted">{info}</small>}
       {error && <div className="invalid-feedback">{error}</div>}
     </div>
-  );
-};
+  )
+}
 
 TextAreaFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
@@ -34,6 +34,6 @@ TextAreaFieldGroup.propTypes = {
   info: PropTypes.string,
   error: PropTypes.string,
   onChange: PropTypes.func.isRequired
-};
+}
 
-export default TextAreaFieldGroup;
+export default TextAreaFieldGroup
